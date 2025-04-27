@@ -1,17 +1,20 @@
+import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { nullable } from "zod";
 
 
 @Table({
     tableName: 'book_authors',
-    timestamps: false
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   })
-  class BookAuthorsModel extends Model {
+  class BookAuthorsModel extends Model<InferAttributes<BookAuthorsModel>, InferCreationAttributes<BookAuthorsModel>> {
     @Column({
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true
     })
-    id!: number;
+    id?: number;
   
     
     @Column(DataType.INTEGER)
@@ -22,19 +25,10 @@ import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript
     author_id!: number;
   
     @Column({
+      field: 'deleted_at',
       type: DataType.DATE,
-      field: 'created_at',
-      allowNull: false,
-      defaultValue: DataType.NOW
     })
-    created_at!: Date;
+    deletedAt?: Date;
   
-    @Column({
-      type: DataType.DATE,
-      field: 'updated_at',
-      allowNull: false,
-      defaultValue: DataType.NOW
-    })
-    updated_at!: Date;
   }
   export default BookAuthorsModel;

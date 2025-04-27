@@ -2,7 +2,8 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table({
     tableName: 'book_copies',
-    timestamps: false
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   })
   class BookCopyModel extends Model {
     @Column({
@@ -17,22 +18,12 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
   
     @Column(DataType.BOOLEAN)
     is_available!: boolean;
-  
+
     @Column({
+      field: 'deleted_at',
       type: DataType.DATE,
-      field: 'created_at',
-      allowNull: false,
-      defaultValue: DataType.NOW
     })
-    created_at!: Date;
-  
-    @Column({
-      type: DataType.DATE,
-      field: 'updated_at',
-      allowNull: false,
-      defaultValue: DataType.NOW
-    })
-    updated_at!: Date;
+    deletedAt?: Date;
   }
 
   export default BookCopyModel;

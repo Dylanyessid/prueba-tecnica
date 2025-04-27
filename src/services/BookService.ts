@@ -2,41 +2,53 @@ import { error } from "console";
 import { CreateBookDto } from "../dto/createBook.dto";
 import { UpdateBookDto } from "../dto/updateBook.dto";
 import BookModel from "../models/Book";
+import BookAuthorsModel from "../models/BookAuthors";
+import BookAuthorService from "./BookAuthorService";
+import { Sequelize } from "sequelize";
+import { sequelizeConnection } from "../config/database";
 
 
 class BookService {
 
     static async insertBook(createBookDto:CreateBookDto) {
+        const transaction = await sequelizeConnection.transaction();
         try {
-            //BookService.insertBook(createBookDto);
+       
             const { name, publishedDate, authors } = createBookDto;
             const book = new BookModel();
             book.name = name;
             book.published_date = new Date(publishedDate); 
-            await book.save();
+            const newBook = await book.save();
+            await BookAuthorService.addAuthorsToBook(authors, newBook.id);
+           
+            await transaction.commit()
             return book;
         } catch (error) {
             console.error("Error inserting book:", error);
+            await transaction.rollback(); 
         }
     }
 
     static async updateBook(id: number, createBookDto: UpdateBookDto) {
+        const transaction = await sequelizeConnection.transaction();
         try {
             const { name, publishedDate, authors } = createBookDto;
             const book = await BookModel.findByPk(id);
             if (!book) {
                 return null; // or throw an error
             }
-
             book.name = name;
             book.published_date = new Date(publishedDate); 
-            
-            const bookAuthors = authors.map((author) => {
-
-            })
+            if(authors.length > 0) {
+                await BookAuthorService.updateAuthorsToBook(authors, id)
+            }
             await book.save();
+            await transaction.commit()
+           
+           
             return book;
         } catch (error) {
+            await transaction.rollback();
             console.error("Error updating book:", error);
             return null
         }
@@ -48,6 +60,7 @@ class BookService {
             if (!book) {
                 return null; // or throw an error
             }
+           
             book.deletedAt = new Date(); // Set the deletedAt field to the current date
             await book.save(); // Save the changes to the database
             return book;

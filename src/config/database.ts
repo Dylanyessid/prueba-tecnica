@@ -4,7 +4,7 @@ import UserModel from "../models/User";
 import { Sequelize } from "sequelize-typescript";
 import path from "path";
 
-const sequelizeConnection = new Sequelize( {
+export const sequelizeConnection = new Sequelize( {
     database: DB_NAME,
     username: DB_USER,
     password: DB_PASSWORD,
@@ -13,6 +13,7 @@ const sequelizeConnection = new Sequelize( {
     port: DB_PORT,
     models:[path.join(__dirname, "../models")],
 });
+
 
 
 const dbInit = async () =>{
