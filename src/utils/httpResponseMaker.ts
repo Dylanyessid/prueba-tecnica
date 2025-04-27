@@ -6,10 +6,10 @@ export const generateSuscessResponse = (data: any, message: string, statusCode:n
     }
 }
 
-export const generateErrorResponse = (error: any, message: string, statusCode:number) => {
+export const generateErrorResponse = (message: string, statusCode:number) => {
     return {
         status: statusCode,
-        error: error,
+       
         message: message
     }
 }

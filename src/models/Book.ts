@@ -20,6 +20,11 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
     @Column(DataType.DATE)
     published_date!: Date;
   
+    @Column({
+      field: 'deleted_at',
+      type: DataType.DATE,
+    })
+    deletedAt?: Date;
    
   }
 
