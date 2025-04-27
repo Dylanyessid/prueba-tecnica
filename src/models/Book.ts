@@ -1,16 +1,18 @@
+import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table({
     tableName: 'books',
-    timestamps: false
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   })
-  class BookModel extends Model {
+  class BookModel extends Model<InferAttributes<BookModel>, InferCreationAttributes<BookModel>> {
     @Column({
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true
     })
-    id!: number;
+    id: number;
   
     @Column(DataType.STRING)
     name!: string;
@@ -18,21 +20,7 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
     @Column(DataType.DATE)
     published_date!: Date;
   
-    @Column({
-      type: DataType.DATE,
-      field: 'created_at',
-      allowNull: false,
-      defaultValue: DataType.NOW
-    })
-    created_at!: Date;
-  
-    @Column({
-      type: DataType.DATE,
-      field: 'updated_at',
-      allowNull: false,
-      defaultValue: DataType.NOW
-    })
-    updated_at!: Date;
+   
   }
 
   export default BookModel;
