@@ -1,3 +1,4 @@
+import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table({
@@ -5,7 +6,7 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   })
-  class BookCopyModel extends Model {
+  class BookCopyModel extends Model<InferAttributes<BookCopyModel>, InferCreationAttributes<BookCopyModel>> {
     @Column({
       type: DataType.INTEGER,
       primaryKey: true,
@@ -13,11 +14,17 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
     })
     id!: number;
 
-    @Column(DataType.INTEGER)
-    book_id!: number;
+    @Column({
+      field:"book_id",
+      type: DataType.INTEGER,
+    })
+    bookId!: number;
   
-    @Column(DataType.BOOLEAN)
-    is_available!: boolean;
+    @Column({
+      field:"is_available",
+      type:DataType.BOOLEAN
+    })
+    isAvailable!: boolean;
 
     @Column({
       field: 'deleted_at',

@@ -1,3 +1,4 @@
+import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 
@@ -6,7 +7,7 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   })
-  class UserModel extends Model {
+  class UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>> {
     @Column({
       type: DataType.INTEGER,
       primaryKey: true,

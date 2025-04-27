@@ -5,6 +5,6 @@ import { booksRouter } from "./books.routes";
 const mainRouter = Router();
 
 mainRouter.use("/books", booksRouter)
-mainRouter.use("/bookCopies", bookCopiesRouter)  
+mainRouter.use("/book-copies", bookCopiesRouter)  
 
 export {mainRouter}
