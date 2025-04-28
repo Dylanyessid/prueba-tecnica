@@ -5,11 +5,15 @@ import { plainToClass, plainToInstance } from "class-transformer";
 
 // Middleware to validate DTOs using class-validator and class-transformer
 // If detects any validation error, it will return a 400 response with the errors
-export const validateDtoMiddelware = (dto: any) => {
+export const validateDtoMiddelware = (source: 'body' | 'params' | 'query',dto: any) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
      
-      let data = req.body;
+      let data = req[source];
+      if (!data) {
+        res.status(400).json({ message: "No data provided" });
+        return;
+      }
 
       const dtoInstance = plainToInstance(dto, data);
   

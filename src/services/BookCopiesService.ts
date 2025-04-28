@@ -1,4 +1,8 @@
+import { Where } from "sequelize/types/utils";
 import BookCopyModel from "../models/BookCopies";
+import { WhereOptions } from "sequelize";
+import { removeFalsyValues } from "../utils/objects";
+import { GetBookCopyDto } from "../dto/bookCopies/getCopy.dto";
 
 class BookCopiesService{
 
@@ -14,9 +18,19 @@ class BookCopiesService{
         }
     }
 
-    static async getBookCopies(bookId: number) {
+    static async getBookCopies(data: GetBookCopyDto) {
+        const where = {
+           
+            bookId: data.bookId
+        } as Record<string, any>;
+        if(data.isAvailable!==null && data.isAvailable!==undefined){
+            where.isAvailable = data.isAvailable
+        }
+
+       
+     
         try {
-            const bookCopies = await BookCopyModel.findAndCountAll({where:{bookId} })
+            const bookCopies = await BookCopyModel.findAndCountAll({where})
             if(!bookCopies){
                 return null
             }

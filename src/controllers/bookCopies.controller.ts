@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import BookCopiesService from "../services/BookCopiesService";
 import { generateErrorResponse, generateSuscessResponse } from "../utils/httpResponseMaker";
+import { GetBookCopyDto } from "../dto/bookCopies/getCopy.dto";
 
 class BookCopiesController {
 
@@ -16,8 +17,10 @@ class BookCopiesController {
     }
 
     static async getBookCopies(req:Request, res:Response) {
-        const {bookId} = req.query
-        const bookCopies = await BookCopiesService.getBookCopies(Number(bookId))
+        const { bookId, isAvailable } = req.query
+
+       
+        const bookCopies = await BookCopiesService.getBookCopies({bookId:Number(bookId), isAvailable: isAvailable !==undefined ? isAvailable==="true": null })
         if(!bookCopies){
             res.status(500).json(generateErrorResponse("Error getting book copies", 500 ))
             return
