@@ -2,6 +2,7 @@ import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 
+//User model definition
 @Table({
     tableName: 'users',
     createdAt: 'created_at',

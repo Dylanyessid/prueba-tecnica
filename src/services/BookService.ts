@@ -35,7 +35,7 @@ class BookService {
             const { name, publishedDate, authors } = createBookDto;
             const book = await BookModel.findByPk(id);
             if (!book) {
-                return null; // or throw an error
+                return null;  
             }
             book.name = name;
             book.published_date = new Date(publishedDate); 
@@ -58,11 +58,11 @@ class BookService {
         try {
             const book = await BookModel.findByPk(id);
             if (!book) {
-                return null; // or throw an error
+                return null;
             }
            
-            book.deletedAt = new Date(); // Set the deletedAt field to the current date
-            await book.save(); // Save the changes to the database
+            book.deletedAt = new Date(); 
+            await book.save(); 
             return book;
         } catch (error) {
             console.error("Error deleting book:", error);

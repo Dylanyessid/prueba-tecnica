@@ -1,6 +1,8 @@
 import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
+
+// Loan model definition
 @Table({
     tableName: 'loans',
     createdAt: 'created_at',

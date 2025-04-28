@@ -1,4 +1,6 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
+
+// Author model definition
 @Table({
     tableName: 'authors',
     createdAt: 'created_at',

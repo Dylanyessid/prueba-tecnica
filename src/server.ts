@@ -4,6 +4,8 @@ import { PORT } from './config/envs';
 import dbInit from './config/database';
 import morgan from 'morgan';
 import { mainRouter } from './routes';
+
+//Server configuration
 const app = express();
 
 app.use(morgan("dev"));

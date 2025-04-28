@@ -2,7 +2,7 @@ import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { nullable } from "zod";
 
-
+//Book Authors model definition
 @Table({
     tableName: 'book_authors',
     createdAt: 'created_at',

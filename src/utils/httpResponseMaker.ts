@@ -1,3 +1,7 @@
+
+// Generate a success or error response object for API responses
+
+
 export const generateSuscessResponse = (data: any, message: string, statusCode:number) => {
     return {
         status: statusCode,

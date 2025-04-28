@@ -20,7 +20,7 @@ class BookAuthorService {
       const bookAuthors = ids.map((author) => {
         return {
           book_id: bookId,
-          author_id: author, // Assuming author has an id property
+          author_id: author,
         };
       });
       await BookAuthorsModel.bulkCreate(bookAuthors);

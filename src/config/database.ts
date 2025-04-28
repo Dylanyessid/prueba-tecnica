@@ -4,6 +4,8 @@ import UserModel from "../models/User";
 import { Sequelize } from "sequelize-typescript";
 import path from "path";
 
+
+//Database connection configuration
 export const sequelizeConnection = new Sequelize( {
     database: DB_NAME,
     username: DB_USER,
@@ -15,7 +17,7 @@ export const sequelizeConnection = new Sequelize( {
 });
 
 
-
+//Database initialization
 const dbInit = async () =>{
     try {
         

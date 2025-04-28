@@ -2,8 +2,6 @@ import { IsBoolean, IsNumber, IsOptional, IsPositive, IsString } from "class-val
 
 export class UpdateLoanDto {
 
-
-
     @IsString()
     @IsOptional()
     returnDate: string;
