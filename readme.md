@@ -1,9 +1,9 @@
 
-# LIBRARY MANAGEMENTE API
+# LIBRARY MANAGEMENT API 📕
 
 Aplicación Backend para la gestión de libros, copias y préstamos (Prueba técnica)
 
-## Instalación
+## Instalación ⚙️
 
 Clona el repositorio e instala las librerías con NPM
 
@@ -30,9 +30,9 @@ Una vez hecho, probar con el comando:
   npm run dev 
 ```
 
-## Decisiones técnicas
+## Decisiones técnicas 💻
 
-### Código
+### Código 🔧
 
 Se eligió ExpressJS como framework de backend con NodeJS y TypeScript. Esto, ya que permite una construcción flexible, minimalista de un backend sin demasiado "código inicial o boilerplate"
 
@@ -40,9 +40,9 @@ Se eligió Zod para validar la obtención de las variables de entorno, fundament
 
 Se eligió class-validator y class-transformer para validar los datos entrantes a los endpoints. También para esto se implementó un middleware para validar los datos de los endpoints y reducir el riesgo de errores
 
-## Modelado BD
+### Modelado BD 💽
 
-### Modelo ERD
+#### Modelo ERD 
 
 ![ERD](https://res.cloudinary.com/ds5cm1lds/image/upload/v1745812765/erd_mzw1ro.png)
 
