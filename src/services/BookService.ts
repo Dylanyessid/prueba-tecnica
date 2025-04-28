@@ -1,6 +1,6 @@
 import { error } from "console";
-import { CreateBookDto } from "../dto/createBook.dto";
-import { UpdateBookDto } from "../dto/updateBook.dto";
+import { CreateBookDto } from "../dto/books/createBook.dto";
+import { UpdateBookDto } from "../dto/books/updateBook.dto";
 import BookModel from "../models/Book";
 import BookAuthorsModel from "../models/BookAuthors";
 import BookAuthorService from "./BookAuthorService";

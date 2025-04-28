@@ -17,7 +17,7 @@ class BookCopiesController {
 
     static async getBookCopies(req:Request, res:Response) {
         const {bookId} = req.query
-        const bookCopies = await BookCopiesService.getAllBookCopies(Number(bookId))
+        const bookCopies = await BookCopiesService.getBookCopies(Number(bookId))
         if(!bookCopies){
             res.status(500).json(generateErrorResponse("Error getting book copies", 500 ))
             return

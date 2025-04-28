@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import BookService from "../services/BookService";
-import { CreateBookDto } from "../dto/createBook.dto";
+import { CreateBookDto } from "../dto/books/createBook.dto";
 import { generateErrorResponse, generateSuscessResponse } from "../utils/httpResponseMaker";
-import { UpdateBookDto } from "../dto/updateBook.dto";
+import { UpdateBookDto } from "../dto/books/updateBook.dto";
 
 class BookController {
 

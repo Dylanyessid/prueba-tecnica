@@ -71,3 +71,11 @@ INSERT INTO authors (id, name, created_at, updated_at, deleted_at) VALUES
 (3, 'George Orwell', NOW(), NOW(), null),
 (4, 'Haruki Murakami', NOW(), NOW(), null),
 (5, 'F. Scott Fitzgerald', NOW(), NOW(), null);
+
+INSERT INTO users (name, email, phone_number, created_at, updated_at)
+VALUES
+  ('Juan Pérez', 'juan.perez@example.com', '123456789', NOW(), NOW()),
+  ('María López', 'maria.lopez@example.com', '987654321', NOW(), NOW()),
+  ('Carlos García', 'carlos.garcia@example.com', '555555555', NOW(), NOW()),
+  ('Ana Martínez', 'ana.martinez@example.com', '666666666', NOW(), NOW());
+

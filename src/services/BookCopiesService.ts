@@ -2,7 +2,7 @@ import BookCopyModel from "../models/BookCopies";
 
 class BookCopiesService{
 
-    static async insertBookCopy(bookId: number): Promise<any> {
+    static async insertBookCopy(bookId: number) {
         try {
             const newCopy = new BookCopyModel()
             newCopy.bookId = bookId;
@@ -14,9 +14,9 @@ class BookCopiesService{
         }
     }
 
-    static async getAllBookCopies(bookId: number): Promise<any> {
+    static async getBookCopies(bookId: number) {
         try {
-            const bookCopies = await BookCopyModel.findAll({where:{bookId}})
+            const bookCopies = await BookCopyModel.findAndCountAll({where:{bookId} })
             if(!bookCopies){
                 return null
             }
@@ -25,7 +25,7 @@ class BookCopiesService{
             return null
         }
     }
-    static async updateBookCopy(id: number, data:any): Promise<any> {
+    static async updateBookCopy(id: number, data:any) {
         try {
             const bookCopy = await BookCopyModel.findOne({where:{id}})
             if(!bookCopy){
@@ -36,6 +36,19 @@ class BookCopiesService{
         } catch (error) {
             return null
         }
+    }
+
+    static async getBookCopyById(id: number){
+        try {
+            const copy = await BookCopyModel.findOne({where:{id}})
+            if(!copy){
+                return null
+            }
+            return copy
+        } catch (error) {
+            return null
+        }
+        
     }
 
 }
