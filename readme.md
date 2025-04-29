@@ -44,6 +44,10 @@ Se eligió swagger para la documentación de endpoints, pues, permite comentar y
 
 ### Modelado BD 💽
 
+#### Ruta SQL
+
+El archivo SQL está en: `/src/scripts/definitions.ts`
+
 #### Modelo ERD
 
 ![ERD](https://res.cloudinary.com/ds5cm1lds/image/upload/v1745812765/erd_mzw1ro.png)
