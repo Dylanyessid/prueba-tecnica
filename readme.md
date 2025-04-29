@@ -40,9 +40,11 @@ Se eligió Zod para validar la obtención de las variables de entorno, fundament
 
 Se eligió class-validator y class-transformer para validar los datos entrantes a los endpoints. También para esto se implementó un middleware para validar los datos de los endpoints y reducir el riesgo de errores
 
+Se eligió swagger para la documentación de endpoints, pues, permite comentar y detallar detalles como parámetros de petición, de cuerpo, y de respuesta rápidamente.
+
 ### Modelado BD 💽
 
-#### Modelo ERD 
+#### Modelo ERD
 
 ![ERD](https://res.cloudinary.com/ds5cm1lds/image/upload/v1745812765/erd_mzw1ro.png)
 

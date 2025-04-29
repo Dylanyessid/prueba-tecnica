@@ -29,18 +29,7 @@ class BookCopiesController {
         return
     }
 
-    static async updateBookCopy(req:Request, res:Response) {
-        const {id} = req.params
-        const updatedCopy = await BookCopiesService.updateBookCopy(Number(id), req.body)
-        if(!updatedCopy){
-            res.status(500).json(generateErrorResponse("Error updating book copy", 500 ))
-            return
-        }
-        res.status(200).json(generateSuscessResponse(updatedCopy,"Book copy updated successfully", 200 ))
-        return
-    }
-
-
+    
 
 }
 
